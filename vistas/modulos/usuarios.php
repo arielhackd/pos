@@ -42,10 +42,12 @@
             $item = null;
             $valor = null;
             $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+            /* EN LA PRIMER COLUMNA SE USA LA VARIABLE $KEY PARA LLEVAR UN CONTADOR DE REGISTROS */
+            /* SI SE USARA EL ID NO SE MOSTRARIAN EN ORDEN, SINO COMO ID */
             foreach($usuarios as $key => $value){
               echo '
                 <tr>
-                  <td>'.$value["id"].'</td>
+                  <td>'.($key+1).'</td>
                   <td>'.$value["nombre"].'</td>
                   <td>'.$value["usuario"].'</td>';
                   if($value["foto"]!=""){

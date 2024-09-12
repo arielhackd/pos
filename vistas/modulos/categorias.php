@@ -33,40 +33,26 @@
           </thead>
 
           <tbody>
-
-            <tr>
-              <td>1</td>
-              <td>EQUIPOS ELECTROMECÁNICOS</td>
-              <td><!-- INICIA ULTIMA COLUMNA DE ACCIONES -->
-                <div class="btn-group">
-                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>1</td>
-              <td>EQUIPOS ELECTROMECÁNICOS</td>
-              <td><!-- INICIA ULTIMA COLUMNA DE ACCIONES -->
-                <div class="btn-group">
-                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>1</td>
-              <td>EQUIPOS ELECTROMECÁNICOS</td>
-              <td><!-- INICIA ULTIMA COLUMNA DE ACCIONES -->
-                <div class="btn-group">
-                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-                </div>
-              </td>
-            </tr>
-
+            <?php
+              $item = null;
+              $valor = null;
+              $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+              foreach($categorias as $key => $value){
+                /* EN LA PRIMER COLUMNA SE USA LA VARIABLE $KEY PARA LLEVAR UN CONTADOR DE REGISTROS */
+                /* SI SE USARA EL ID NO SE MOSTRARIAN EN ORDEN, SINO COMO ID */
+                echo '
+                  <tr>
+                    <td>'.($key+1).'</td>
+                    <td>'.$value["categoria"].'</td>
+                    <td><!-- INICIA ULTIMA COLUMNA DE ACCIONES -->
+                      <div class="btn-group">
+                        <button class="btn btn-warning btnEditarCategoria" idCategoria="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fa fa-pencil"></i></button>
+                        <button class="btn btn-danger btnEliminarCategoria" idCategoria="'.$value["id"].'"><i class="fa fa-times"></i></button>
+                      </div>
+                    </td>
+                  </tr>';
+              }
+            ?>
           </tbody>
 
         </table>
@@ -83,7 +69,7 @@
 
 
 
-<!-- VENTANAS MODALES / AGREGAR USUARIO -->
+<!-- VENTANAS MODALES / AGREGAR CATEGORIA -->
 <div id="modalAgregarCategoria" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- CONTENIDO DEL MODAL -->
@@ -111,41 +97,52 @@
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
           <button type="submit" class="btn btn-primary">Guardar Categoría</button>
         </div> 
+        <?php
+          $crearCategoria = new ControladorCategorias();
+          $crearCategoria -> ctrCrearCategoria();
+        ?>
       </form>
     </div>
   </div>
 </div>
 
 
-
-
-
-
-<!-- VENTANAS MODALES / MODIFICAR USUARIO -->
-<div id="modalModificarCategoria" class="modal fade" role="dialog">
+<!-- VENTANAS MODALES / MODIFICAR CATEGORIA -->
+<div id="modalEditarCategoria" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- CONTENIDO DEL MODAL -->
     <div class="modal-content">
-      <!-- ENCABEZADO DEL MODAL -->
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modificar Categoria</h4>
-      </div>
-      <!-- CUERPO DEL MODAL -->
-      <div class="modal-body">
-        <!-- INPUT PARA EL USUARIO -->
-        <div class="form-group">
+      <form role="form" method="post">
+        <!-- ENCABEZADO DEL MODAL -->
+        <div class="modal-header" style="background:#3c8dbc; color:white;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Editar Categoría</h4>
+        </div>
+        <!-- CUERPO DEL MODAL -->
+        <div class="modal-body">
+          <div class="box-body">
+            <!-- INPUT PARA EL USUARIO -->
+            <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
-                <input type="text" class="form-control input-lg" name="nuevaCategoria" placeholder="Ingresar Categoría" required>
+                <input type="text" class="form-control input-lg" name="editarCategoria" id="editarCategoria" value="" required>
+                <input type="hidden" id="idCategoria" name="idCategoria">
               </div>
             </div>
-      </div>
-      <!-- FOOTER DEL MODAL -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Salir</button>
-        <button type="submit" class="btn btn-primary">Modificar Categoría</button>
-      </div> 
+          </div><!-- FINAL DE BOX BODY -->
+        </div>
+        <!-- FOOTER DEL MODAL -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div> 
+        <?php
+          $editarCategoria = new ControladorCategorias();
+          $editarCategoria -> ctrEditarCategoria();
+          $borrarCategoria = new ControladorCategorias();
+          $borrarCategoria -> ctrBorrarCategoria();
+        ?>
+      </form>
     </div>
   </div>
 </div>
