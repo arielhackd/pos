@@ -123,5 +123,6 @@
 <script src="vistas/js/plantilla.js"></script>
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/categorias.js"></script>
+<script src="vistas/js/productos.js"></script>
 </body>
 </html>

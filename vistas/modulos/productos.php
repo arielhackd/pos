@@ -22,7 +22,7 @@
       <!-- CUERPO DE LA TABLL -->
       <div class="box-body">
         <!-- SE CREA LA TABAL DENTRO DEL CUERPO DEL BOX -->
-        <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
+        <table class="table table-bordered table-striped dt-responsive tablaProductos" width="100%">
           <!-- ENCABEZADO DE TABLA CON THEAD -->
           <thead>
             <tr>
@@ -39,7 +39,7 @@
             </tr>
           </thead>
 
-          <tbody>
+          <!-- <tbody>
           
           <?php
             $item = null;
@@ -73,7 +73,7 @@
             
           ?>
 
-          </tbody>
+          </tbody> -->
 
         </table>
       </div>
