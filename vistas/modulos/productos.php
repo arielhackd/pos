@@ -264,19 +264,19 @@
 
             <!-- FORM GROUP PARA ENTRADAS DE PRECIOS -->
             <div class="form-group row">
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <!-- NUEVA ENTRADA PARA EL PRECIO COMPRA -->
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
-                  <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min="0" placeholder="Precio de Compra" required>
+                  <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min="0" step="any" placeholder="Precio de Compra" required>
                 </div>
               </div>
               
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <!-- ENTRADA PARA EL PRECIO VENTA -->
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
-                  <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min="0" placeholder="Precio de Venta" required>
+                  <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min="0" step="any" placeholder="Precio de Venta" required>
                 </div>
 
                 <br>
