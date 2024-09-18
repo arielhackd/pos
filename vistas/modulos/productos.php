@@ -148,7 +148,7 @@
 
             <!-- FORM GROUP PARA ENTRADAS DE PRECIOS -->
             <div class="form-group row">
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <!-- NUEVA ENTRADA PARA EL PRECIO COMPRA -->
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
@@ -156,7 +156,7 @@
                 </div>
               </div>
               
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <!-- ENTRADA PARA EL PRECIO VENTA -->
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
@@ -188,9 +188,9 @@
             <!-- NUEVA ENTRADA PARA SUBIR LA FOTO -->
             <div class="form-group">
               <div class="panel">SUBIR IMAGEN</div>
-              <input type="file" id="nuevaImagen" name="nuevaImagen">
+              <input type="file" class="nuevaImagen" name="nuevaImagen">
               <p class="help-block">Peso máximo de la foto 2MB</p>
-              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
             </div>
 
           </div><!-- FINAL DE BOX BODY -->
@@ -214,7 +214,7 @@
 <!-- VENTANAS MODALES / EDITAR PRODUCTO -->
 <div id="modalEditarProducto" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    <!-- CONTENIDO DEL MODAL -->
+    <!-- CONTENIDO DEL MODAL EDITAR -->
     <div class="modal-content">
       <form role="form" method="post" enctype="multipart/form-data">
         <!-- ENCABEZADO DEL MODAL -->
@@ -222,10 +222,10 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Editar Producto</h4>
         </div>
-        <!-- CUERPO DEL MODAL -->
+        <!-- CUERPO DEL MODAL EDITAR -->
         <div class="modal-body">
           <div class="box-body">
-            <!-- INPUT PARA EL CODIGO -->
+            <!-- INPUT PARA EL CODIGO EDITAR -->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-code"></i></span>
@@ -233,7 +233,7 @@
               </div>
             </div>
 
-            <!-- INPUTA PARA DESCRIPCION-->
+            <!-- INPUTA PARA DESCRIPCION EDITAR-->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
@@ -241,7 +241,7 @@
               </div>
             </div>
 
-            <!-- NUEVA ENTRADA CATEGORIA -->
+            <!-- CONTROL CATEGORIA EDITAR -->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
@@ -254,7 +254,7 @@
               </div>
             </div>
 
-            <!-- NUEVA ENTRADA STOCK-->
+            <!-- CONTROL STOCK EDITAR-->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-check"></i></span>
@@ -262,10 +262,10 @@
               </div>
             </div>
 
-            <!-- FORM GROUP PARA ENTRADAS DE PRECIOS -->
-            <div class="form-group row">
+            <!-- FORM GROUP PARA INPUTS DE PRECIOS EDITAR -->
+            <div class="form-group">
               <div class="col-xs-12 col-sm-6">
-                <!-- NUEVA ENTRADA PARA EL PRECIO COMPRA -->
+                <!-- INPUT PRECIO COMPRA EDITAR -->
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
                   <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min="0" step="any" placeholder="Precio de Compra" required>
@@ -273,14 +273,14 @@
               </div>
               
               <div class="col-xs-12 col-sm-6">
-                <!-- ENTRADA PARA EL PRECIO VENTA -->
+                <!-- INPUT PRECIO VENTA EDITAR -->
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
                   <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min="0" step="any" placeholder="Precio de Venta" required>
                 </div>
 
                 <br>
-                <!-- CHECKBOX PARA PORCENTAJES -->
+                <!-- CHECKBOX PARA PORCENTAJES EDITAR -->
                 <div class="col-xs-6">
                   <div class="form-group">
                     <label>
@@ -290,7 +290,7 @@
                   </div>
                 </div>
 
-                <!-- ENTRADA PARA PORCENTAJES -->
+                <!-- ENTRADA PARA PORCENTAJES EDITAR -->
                 <div class="col-xs-6" style="padding:0;">
                   <div class="input-group">
                     <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
@@ -301,10 +301,10 @@
               </div>
             </div>
 
-            <!-- NUEVA ENTRADA PARA SUBIR LA FOTO -->
+            <!-- SUBIR LA FOTO EDITAR -->
             <div class="form-group">
               <div class="panel">SUBIR IMAGEN</div>
-              <input type="file" id="nuevaImagen" name="nuevaImagen">
+              <input type="file" id="editarImagen" name="editarImagen">
               <p class="help-block">Peso máximo de la foto 2MB</p>
               <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="100px">
             </div>
@@ -314,7 +314,7 @@
         <!-- FOOTER DEL MODAL -->
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary">Guardar Producto</button>
+          <button type="submit" class="btn btn-primary">Modificar Producto</button>
         </div> 
       </form>
     </div>
