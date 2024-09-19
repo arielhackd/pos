@@ -99,33 +99,50 @@ $("#nuevaCategoria").change(function(){
 })
 
 /* MODIFICANDO EL PRECIO DE VENTA EN FUNCION DEL PRECIO COMPRA */
-$("#nuevoPrecioCompra").change(function(){
+$("#nuevoPrecioCompra, #editarPrecioCompra").change(function(){
 	if($(".porcentaje").prop("checked")){
 		var valorPorcentaje = $(".nuevoPorcentaje").val();
+		/* VARIABLE PARA EL FORM AGREGAR PRODUCTO */
 		var porcentaje = Number(($("#nuevoPrecioCompra").val()*valorPorcentaje/100))+Number($("#nuevoPrecioCompra").val());
+		/* VARIABLE PARA EL FORM DE EDITAR PRODUCTO */
+		var editarPorcentaje = Number(($("#editarPrecioCompra").val()*valorPorcentaje/100))+Number($("#editarPrecioCompra").val());
+		/* SETEANDO PARAMETROS DE NUEVO PRECIO */
 		$("#nuevoPrecioVenta").val(porcentaje);
 		$("#nuevoPrecioVenta").prop("readonly", true);
+		/* SETEANDO PARAMETROS EDITAR PRECIO */
+		$("#editarPrecioVenta").val(editarPorcentaje);
+		$("#editarPrecioVenta").prop("readonly", true);
 	}
 })
 
 /* CAMBIO DE PORCENTAJE */
 $(".nuevoPorcentaje").change(function(){
 	if($(".porcentaje").prop("checked")){
-		var valorPorcentaje = $(".nuevoPorcentaje").val();
+		var valorPorcentaje = $(this).val();
+		/* VARIABLE PARA EL FORM AGREGAR PRODUCTO */
 		var porcentaje = Number(($("#nuevoPrecioCompra").val()*valorPorcentaje/100))+Number($("#nuevoPrecioCompra").val());
+		/* VARIABLE PARA EL FORM DE EDITAR PRODUCTO */
+		var editarPorcentaje = Number(($("#editarPrecioCompra").val()*valorPorcentaje/100))+Number($("#editarPrecioCompra").val());
+		/* SETEANDO PARAMETROS DE NUEVO PRECIO */
 		$("#nuevoPrecioVenta").val(porcentaje);
 		$("#nuevoPrecioVenta").prop("readonly", true);
+		/* SETEANDO PARAMETROS EDITAR PRECIO */
+		$("#editarPrecioVenta").val(editarPorcentaje);
+		$("#editarPrecioVenta").prop("readonly", true);
 	}
 })
 
 $(".porcentaje").on("ifUnchecked",function(){
 	$("#nuevoPrecioVenta").prop("readonly", false);
+	$("#editarPrecioVenta").prop("readonly", false);
 })
 $(".porcentaje").on("ifChecked",function(){
 	$("#nuevoPrecioVenta").prop("readonly", true);
+	$("#editarPrecioVenta").prop("readonly", true);
 })
 
-/* ELIMINANDO EL PRODUCTO */
+/* LA SIGUIENTE LINEA FUNCIONA Y ES MÁS ESPECIFICA PERO YO PREFERÍ USAR LA MAS RESUMIDA */
+/* $(".tablaProductos tbody").on("click", "button.btnEliminarProducto",function(){ */
 $(".tablaProductos").on("click", ".btnEliminarProducto",function(){
 	var idProducto = $(this).attr("idProducto");
 	var codigo = $(this).attr("codigo");
@@ -142,7 +159,53 @@ $(".tablaProductos").on("click", ".btnEliminarProducto",function(){
 		confirmButtonText: "Si, borra producto."
 	}).then((result)=>{
 		if(result.value){
-			window.location = "index.php?ruta=productos&idProducto="+idProducto+"&codigo="+codigo+"&imagen="+imagen;
+			window.location = "index.php?ruta=productos&idProducto="+idProducto+"&imagen="+imagen+"&codigo="+codigo;
+		}
+	})
+})
+
+/* LA SIGUIENTE LINEA FUNCIONA Y ES MÁS ESPECIFICA PERO YO PREFERÍ USAR LA MAS RESUMIDA */
+/* $(".tablaProductos tbody").on("click", "button.btnEditarProducto",function(){ */
+$(".tablaProductos").on("click", ".btnEditarProducto",function(){
+	var idProducto = $(this).attr("idProducto");
+	var datos = new FormData();
+	datos.append("idProducto", idProducto);
+	$.ajax({
+		url: "ajax/productos.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function(respuesta){
+			/* CONSULTA DE CATEGORIA PARA OBTENER LA DATA Y MOSTRARLA EN EL OPTION DE CATEGORIAS */
+			var datosCategoria = new FormData();
+			datosCategoria.append("idCategoria", respuesta["id_categoria"]);
+			$.ajax({
+				url: "ajax/categorias.ajax.php",
+				method: "POST",
+				data: datosCategoria,
+				cache: false,
+				contentType: false,
+				processData: false,
+				dataType: "json",
+				success: function(respuesta){
+					$("#editarCategoria").val(respuesta["id"]);
+					$("#editarCategoria").html(respuesta["categoria"]);
+				}
+			})
+			/* FINAL CONSULTA DE CATEGORIAS, CONSULTAS ANIDADAS */
+			/* AHORA SI SE COLOCAN LOS DEMAS DATOS DEL FORMULARIO */
+			$("#editarCodigo").val(respuesta["codigo"]);
+			$("#editarDescripcion").val(respuesta["descripcion"]);
+			$("#editarStock").val(respuesta["stock"]);
+			$("#editarPrecioCompra").val(respuesta["precio_compra"]);
+			$("#editarPrecioVenta").val(respuesta["precio_venta"]);
+			if(respuesta["imagen"] != ""){
+				$("#imagenActual").val(respuesta["imagen"]);
+				$(".previsualizar").attr("src", respuesta["imagen"])
+			}
 		}
 	})
 })

@@ -108,7 +108,7 @@
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
                 <!-- EN JAVASCRIPT HACEMOS REFERENCIA AL OBJETO A TRAVES DEL ID COMO #nuevaCategoria -->
-                <select class="form-control input-lg" id="nuevaCategoria" name="nuevaCategoria">
+                <select class="form-control input-lg" id="nuevaCategoria" name="nuevaCategoria" required>
                   <option value="">Seleccionar Categoria</option>
                   <?php
                     $item = null;
@@ -152,7 +152,7 @@
                 <!-- NUEVA ENTRADA PARA EL PRECIO COMPRA -->
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
-                  <input type="number" class="form-control input-lg" id="nuevoPrecioCompra" name="nuevoPrecioCompra" min="0" placeholder="Precio de Compra" required>
+                  <input type="number" class="form-control input-lg" id="nuevoPrecioCompra" step="any" name="nuevoPrecioCompra" min="0" placeholder="Precio de Compra" required>
                 </div>
               </div>
               
@@ -160,7 +160,7 @@
                 <!-- ENTRADA PARA EL PRECIO VENTA -->
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
-                  <input type="number" class="form-control input-lg" id="nuevoPrecioVenta" name="nuevoPrecioVenta" min="0" placeholder="Precio de Venta" required>
+                  <input type="number" class="form-control input-lg" id="nuevoPrecioVenta" step="any" name="nuevoPrecioVenta" min="0" placeholder="Precio de Venta" required>
                 </div>
 
                 <br>
@@ -210,11 +210,10 @@
 </div>
 
 
-
 <!-- VENTANAS MODALES / EDITAR PRODUCTO -->
 <div id="modalEditarProducto" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    <!-- CONTENIDO DEL MODAL EDITAR -->
+    <!-- CONTENIDO DEL MODAL -->
     <div class="modal-content">
       <form role="form" method="post" enctype="multipart/form-data">
         <!-- ENCABEZADO DEL MODAL -->
@@ -222,65 +221,63 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Editar Producto</h4>
         </div>
-        <!-- CUERPO DEL MODAL EDITAR -->
+        <!-- CUERPO DEL MODAL -->
         <div class="modal-body">
           <div class="box-body">
-            <!-- INPUT PARA EL CODIGO EDITAR -->
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-code"></i></span>
-                <input type="text" class="form-control input-lg" name="editarCodigo" value="" required>
-              </div>
-            </div>
-
-            <!-- INPUTA PARA DESCRIPCION EDITAR-->
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
-                <input type="text" class="form-control input-lg" name="editarDescripcion" value="" required>
-              </div>
-            </div>
-
-            <!-- CONTROL CATEGORIA EDITAR -->
+            <!-- NUEVA ENTRADA CATEGORIA -->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
-                <select class="form-control input-lg" name="editarCategoria">
-                  <option value=""></option>
-                  <option value="Taladros">Taladros</option>
-                  <option value="Andamios">Andamios</option>
-                  <option value="Equipos para Construccion">Equipos para Construccion</option>
+                <!-- EN JAVASCRIPT HACEMOS REFERENCIA AL OBJETO A TRAVES DEL ID COMO #nuevaCategoria -->
+                <select class="form-control input-lg" name="editarCategoria" readonly required>
+                  <option id="editarCategoria"></option>
                 </select>
               </div>
             </div>
 
-            <!-- CONTROL STOCK EDITAR-->
+            <!-- INPUT PARA EL CODIGO -->
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-check"></i></span>
-                <input type="number" class="form-control input-lg" name="nuevoStock" min="0" placeholder="Stock" required>
+                <span class="input-group-addon"><i class="fa fa-code"></i></span>
+                <input type="text" class="form-control input-lg" id="editarCodigo" name="editarCodigo" readonly required>
               </div>
             </div>
 
-            <!-- FORM GROUP PARA INPUTS DE PRECIOS EDITAR -->
+            <!-- NUEVA ENTRADA DESCRIPCION-->
             <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
+                <input type="text" class="form-control input-lg" name="editarDescripcion" id="editarDescripcion" required>
+              </div>
+            </div>
+
+            <!-- NUEVA ENTRADA STOCK-->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-check"></i></span>
+                <input type="number" class="form-control input-lg" name="editarStock" id="editarStock" min="0" required>
+              </div>
+            </div>
+
+            <!-- FORM GROUP PARA ENTRADAS DE PRECIOS -->
+            <div class="form-group row">
               <div class="col-xs-12 col-sm-6">
-                <!-- INPUT PRECIO COMPRA EDITAR -->
+                <!-- NUEVA ENTRADA PARA EL PRECIO COMPRA -->
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
-                  <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min="0" step="any" placeholder="Precio de Compra" required>
+                  <input type="number" class="form-control input-lg" id="editarPrecioCompra" name="editarPrecioCompra" step="any" min="0" required>
                 </div>
               </div>
               
               <div class="col-xs-12 col-sm-6">
-                <!-- INPUT PRECIO VENTA EDITAR -->
+                <!-- ENTRADA PARA EL PRECIO VENTA -->
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
-                  <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min="0" step="any" placeholder="Precio de Venta" required>
+                  <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" step="any" min="0" readonly required>
                 </div>
 
                 <br>
-                <!-- CHECKBOX PARA PORCENTAJES EDITAR -->
+                <!-- CHECKBOX PARA PORCENTAJES -->
                 <div class="col-xs-6">
                   <div class="form-group">
                     <label>
@@ -290,7 +287,7 @@
                   </div>
                 </div>
 
-                <!-- ENTRADA PARA PORCENTAJES EDITAR -->
+                <!-- ENTRADA PARA PORCENTAJES -->
                 <div class="col-xs-6" style="padding:0;">
                   <div class="input-group">
                     <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
@@ -301,12 +298,13 @@
               </div>
             </div>
 
-            <!-- SUBIR LA FOTO EDITAR -->
+            <!-- NUEVA ENTRADA PARA SUBIR LA FOTO -->
             <div class="form-group">
               <div class="panel">SUBIR IMAGEN</div>
-              <input type="file" id="editarImagen" name="editarImagen">
+              <input type="file" class="nuevaImagen" name="editarImagen">
               <p class="help-block">Peso máximo de la foto 2MB</p>
-              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+              <input type="hidden" name="imagenActual" id="imagenActual">
             </div>
 
           </div><!-- FINAL DE BOX BODY -->
@@ -314,9 +312,16 @@
         <!-- FOOTER DEL MODAL -->
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary">Modificar Producto</button>
-        </div> 
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
       </form>
+      <?php
+        $editarProducto = new ControladorProductos();
+        $editarProducto -> ctrEditarProducto();
+
+        $eliminarProducto = new ControladorProductos();
+        $eliminarProducto -> ctrBorrarProducto();
+      ?>
     </div>
   </div>
 </div>
