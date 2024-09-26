@@ -33,4 +33,12 @@ $(".tablas").DataTable({
 $('input[type="checkbox"].flat-green, input[type="radio"].flat-green').iCheck({
 	checkboxClass: 'icheckbox_flat-green',
 	radioClass   : 'iradio_flat-green'
-  })
+})
+
+/* INPUT MASK */
+/* DateMask dd/mm/yyyy */
+$('#datemask').inputmask('dd/mm/yyyy', {'placeholder':'dd/mm/yyyy'})
+/* DateMask2 mm/dd/yyyy */
+$('#datemask2').inputmask('mm/dd/yyyy', {'placeholder':'mm/dd/yyyy'})
+/* MONEY EURO */
+$('#data-mask').inputmask()
