@@ -120,7 +120,7 @@ class ControladorUsuarios{
                     </script>';
                 }
 
-               }else{
+            }else{
                 echo '<script>
                     swal({
                         type: "error",
@@ -134,7 +134,7 @@ class ControladorUsuarios{
                         }
                     });
                 </script>';
-               }
+            }
         }else{
 
         }

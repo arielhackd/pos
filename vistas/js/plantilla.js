@@ -41,4 +41,4 @@ $('#datemask').inputmask('dd/mm/yyyy', {'placeholder':'dd/mm/yyyy'})
 /* DateMask2 mm/dd/yyyy */
 $('#datemask2').inputmask('mm/dd/yyyy', {'placeholder':'mm/dd/yyyy'})
 /* MONEY EURO */
-$('#data-mask').inputmask()
+$('[data-mask]').inputmask()
